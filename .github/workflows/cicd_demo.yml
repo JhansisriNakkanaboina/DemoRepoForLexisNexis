@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dummy step
-        run: echo "Register package step"
+        run: echo "Register package step."
 
   change:
     name: Change Request Attributes
