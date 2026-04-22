@@ -10,22 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Register Pipeline
-        uses: ServiceNow/servicenow-devops-register-pipeline@v1
-        with:
-          instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-user-name: ${{ secrets.SN_USERNAME }}
-          devops-integration-user-password: ${{ secrets.SN_PASSWORD }}
-          tool-id: ${{ secrets.SN_TOOL_ID }}
-          pipeline-name: "cicd_demo"
-          build-number: ${{ github.run_number }}
-
       - name: Get Change
         uses: ServiceNow/servicenow-devops-get-change@v6.3.0
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-user-name: ${{ secrets.SN_USERNAME }}
-          devops-integration-user-password: ${{ secrets.SN_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_TOKEN }}
           tool-id: ${{ secrets.SN_TOOL_ID }}
           context-github: ${{ toJson(github) }}
           change-details: |
