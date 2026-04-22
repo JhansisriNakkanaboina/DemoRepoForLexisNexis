@@ -28,7 +28,7 @@ jobs:
           context-github: ${{ toJson(github) }}
           change-details: |
             {
-              "short_description": "Change from GitHub commit",
+              "short_description": "Change from GitHub commit is created successfully",
               "description": "Triggered automatically on push to main",
               "assignment_group": "DevOps",
               "requested_by": "admin"
