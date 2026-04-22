@@ -19,6 +19,6 @@ jobs:
           context-github: ${{ toJson(github) }}
           change-details: |
             {
-              "short_description": "Auto change",
+              "short_description": "Auto change8",
               "description": "Triggered from GitHub"
             }
