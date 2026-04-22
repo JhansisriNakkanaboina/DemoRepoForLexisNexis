@@ -6,19 +6,21 @@ on:
       - main
 
 jobs:
-  registerPackage:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dummy step
-        run: echo "Register package step."
-
   change:
-    name: Change Request Attributes
     runs-on: ubuntu-latest
-    needs: registerPackage
 
     steps:
-      - name: ServiceNow DevOps Get Change
+      - name: Register Pipeline
+        uses: ServiceNow/servicenow-devops-register-pipeline@v1
+        with:
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          devops-integration-user-name: ${{ secrets.SN_USERNAME }}
+          devops-integration-user-password: ${{ secrets.SN_PASSWORD }}
+          tool-id: ${{ secrets.SN_TOOL_ID }}
+          pipeline-name: "cicd_demo"
+          build-number: ${{ github.run_number }}
+
+      - name: Get Change
         uses: ServiceNow/servicenow-devops-get-change@v6.3.0
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
@@ -28,8 +30,6 @@ jobs:
           context-github: ${{ toJson(github) }}
           change-details: |
             {
-              "short_description": "Change from GitHub commit is created successfully",
-              "description": "Triggered automatically on push to main",
-              "assignment_group": "DevOps",
-              "requested_by": "admin"
+              "short_description": "Auto change",
+              "description": "Triggered from GitHub"
             }
