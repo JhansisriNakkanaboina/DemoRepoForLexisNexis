@@ -6,19 +6,53 @@ on:
       - main
 
 jobs:
-  change:
+  build:
     runs-on: ubuntu-latest
+    name: Build
 
     steps:
-      - name: change
-        uses: ServiceNow/servicenow-devops-get-change@v6.3.0
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build step
+        run: echo "Build completed"
+
+  ServiceNowDevOpsChange:
+    needs: build
+    runs-on: ubuntu-latest
+    name: ServiceNow DevOps Change
+
+    steps:
+      - name: ServiceNow Change
+        uses: ServiceNow/servicenow-devops-change@VERSION
+
         with:
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-token: ${{ secrets.SN_TOKEN }}
-          tool-id: ${{ secrets.SN_TOOL_ID }}
-          context-github: ${{ toJson(github) }}
-          change-details: |
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          context-github: ${{ toJSON(github) }}
+          job-name: ServiceNow DevOps Change
+
+          change-request: >
             {
-              "short_description": "Auto change8",
-              "description": "Triggered from GitHub"
+              "attributes": {
+                "requested_by": { "name": "Test User" },
+                "assignment_group": { "name": "Change Approval Team" },
+                "priority": "2",
+                "comments": "This is a sample pipeline script to be added in your change step",
+                "work_notes": "Update this to work_notes",
+                "start_date": "2026-04-24 11:59:59",
+                "end_date": "2026-04-25 11:59:59"
+              }
             }
+            
+# Uncomment below if using deployment gates
+# deploy:
+#   name: Deploy
+#   needs: ServiceNowDevOpsChange
+#   runs-on: ubuntu-latest
+#   environment: deploy-gates-demo
+#
+#   steps:
+#     - name: Run deployment scripts
+#       run: echo "Completed Deployment"
