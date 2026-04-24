@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get Change
+      - name: change
         uses: ServiceNow/servicenow-devops-get-change@v6.3.0
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
