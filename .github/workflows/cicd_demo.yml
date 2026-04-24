@@ -39,7 +39,7 @@ jobs:
                 "requested_by": { "name": "Adam Ringle" },
                 "assignment_group": { "name": "ITSM Engineering" },
                 "priority": "2",
-                "comments": "This is a sample pipeline script to be added in your change step.",
+                "comments": "This is a sample pipeline script to be added in your change step",
                 "work_notes": "Update this to work_notes",
                 "start_date": "2026-04-24 11:59:59",
                 "end_date": "2026-04-25 11:59:59"
