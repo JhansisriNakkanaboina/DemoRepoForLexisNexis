@@ -37,7 +37,7 @@ jobs:
             {
               "attributes": {
                 "requested_by": { "name": "Adam Ringle" },
-                "short_description": "Short description from GitHub"
+                "short_description": "Short description from GitHub",
                 "assignment_group": { "name": "ITSM Engineering" },
                 "priority": "2",
                 "comments": "This is a sample pipeline script to be added in your change step",
