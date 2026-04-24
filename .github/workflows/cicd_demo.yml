@@ -23,7 +23,7 @@ jobs:
     name: ServiceNow DevOps Change
 
     steps:
-      - name: ServiceNow Change
+      - name: ServiceNow DevOps Change
         uses: ServiceNow/servicenow-devops-change@v5.1.0
 
         with:
