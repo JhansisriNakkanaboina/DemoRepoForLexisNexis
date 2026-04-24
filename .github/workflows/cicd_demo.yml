@@ -47,12 +47,12 @@ jobs:
             }
             
 # Uncomment below if using deployment gates
-# deploy:
-#   name: Deploy
-#   needs: ServiceNowDevOpsChange
-#   runs-on: ubuntu-latest
-#   environment: deploy-gates-demo
-#
-#   steps:
-#     - name: Run deployment scripts
-#       run: echo "Completed Deployment"
+  deploy:
+    name: Deploy
+    needs: ServiceNowDevOpsChange
+    runs-on: ubuntu-latest
+    environment: deploy-gates-demo
+
+    steps:
+      - name: Run deployment scripts
+        run: echo "Completed Deployment"
