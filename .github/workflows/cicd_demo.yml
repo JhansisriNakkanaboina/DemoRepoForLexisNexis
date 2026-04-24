@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: ServiceNow Change
-        uses: ServiceNow/servicenow-devops-change@VERSION
+        uses: ServiceNow/servicenow-devops-change@v5.1.0
 
         with:
           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
