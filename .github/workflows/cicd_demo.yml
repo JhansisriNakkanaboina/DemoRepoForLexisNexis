@@ -46,7 +46,7 @@ jobs:
                 "end_date": "2026-04-29 11:59:59"
               }
             }
-            deployment_gate: '{"environment":"deployment_gate","jobName":"Deploy"}'
+          deployment_gate: '{"environment":"deployment_gate","jobName":"Deploy"}'
             
 # Uncomment below if using deployment gates
   deploy:
