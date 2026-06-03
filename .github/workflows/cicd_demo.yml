@@ -43,7 +43,7 @@ jobs:
                 "comments": "This is a sample pipeline script to be added in your change step",
                 "work_notes": "Update this to work_notes",
                 "start_date": "2026-06-27 10:59:59",
-                "end_date": "2026-06-27 11:59:59"
+                "end_date": "2026-06-28 11:59:59"
               }
             }
           deployment_gate: '{"environment":"deployment_gate","jobName":"Deploy"}'
